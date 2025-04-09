@@ -1,0 +1,1 @@
+#search for an article about effective teamwork.  Read it and summarize it in the Quarto document you just created.  Link to the article in your summary.
