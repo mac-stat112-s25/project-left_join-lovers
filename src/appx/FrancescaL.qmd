@@ -1,1 +1,9 @@
-#search for an article about effective teamwork.  Read it and summarize it in the Quarto document you just created.  Link to the article in your summary.
+#Effective Teamwork.  
+
+**Article about Effective Teamwork**
+https://www.forbes.com/sites/rodgerdeanduncan/2024/10/10/how-to-make-teamwork-effective-for-success/
+
+**Summary**
+- Continuous recognition of good *team* performance. Using words such as "we", "us", and "ours" is better than using "I", "me", or "mine."
+- Outcomes must be clearly defined.
+- Team members must have confidence in the metrics used to measure success/ completion of certain tasks.
