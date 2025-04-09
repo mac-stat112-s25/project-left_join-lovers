@@ -41,7 +41,7 @@ book:
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
-  - src/appx/PT
+  - src/appx/Providence-T
 
 
 
