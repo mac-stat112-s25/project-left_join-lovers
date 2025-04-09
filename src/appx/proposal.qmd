@@ -2,7 +2,7 @@
 title: "Proposal: Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
 ---
 
-Francesca LoPresti, Maren Stewart-Tanner, Providence Thusabantu
+Francesca LoPresti, Maren Stewart-Tanner, Providence Thusabantu, El Davis-Greene
 
 Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software
 
@@ -14,11 +14,11 @@ In this project, we will be examining user data information for a simulated dati
 **Possible research questions:**
 How does your sexual orientation impact your dating app mentality?
 General attitude by sexual orientation
-Color/ facet with app usage time?
+ - Color/ facet with app usage time?
 What are the most influential demographic factors in determining a user’s dependency (as quantified by minutes (either numbers or categorical brackets) spent on a dating app)?
-Geographic (urban/suburban/rural)
-Class
-Education
+ - Geographic (urban/suburban/rural)
+ - Class
+ - Education
 A combination of those factors? Ie low-income urban vs low-income rural?
 What can this tell us about the “connectedness” of certain communities? 
 What is the most common interest tag?
@@ -28,10 +28,5 @@ How does education level impact the swipe right ratio or swipe right label?
 Are there gender-based differences in dating app behavior and expectations?
 What are the most common behaviors among frequent vs. infrequent users?
 
-
-
-
-
-
-Reason/ inspiration behind choosing the topic: 
+**Reason/ inspiration behind choosing the topic:**
 In recent years, dating apps have transformed how people form romantic and social connections. With technology playing an increasingly central role in our personal lives, understanding user behavior on these platforms provides valuable insight into modern relationship dynamics, preferences, and societal trends. We chose the Dating App Behavior Dataset because it has a mix of both quantitative and qualitative variables that we think can be used to study behavior. Our goal is to identify relationships and understand how they differ between different groups of people. Lastly, this topic is relatable to a lot of people with the increase in online dating.
