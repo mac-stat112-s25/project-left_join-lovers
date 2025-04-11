@@ -42,9 +42,9 @@ book:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
   - src/appx/MarenS-T.qmd
-  - src/appx/Providence-T
+  - src/appx/Providence-T.qmd
   - src/appx/FrancescaL.qmd
-  - src/ElDG.qmd
+  - src/appx/ElDG.qmd
 
 
 format:
