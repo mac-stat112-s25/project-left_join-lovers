@@ -37,14 +37,22 @@ book:
 
   chapters:
     - index.qmd
+    
+    - part: "Effective Teamwork Readings"
+      chapters: 
+      - src/appx/MarenS-T.qmd
+      - src/appx/Providence-T.qmd
+      - src/appx/FrancescaL.qmd
+      - src/appx/ElDG.qmd
+    
+    - part: "EDA"
+      chapters: 
+        - src/EDA/MST_EDA.qmd
 
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
-  - src/appx/MarenS-T.qmd
-  - src/appx/Providence-T.qmd
-  - src/appx/FrancescaL.qmd
-  - src/appx/ElDG.qmd
+
 
 
 format:

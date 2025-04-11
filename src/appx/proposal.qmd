@@ -1,5 +1,5 @@
 ---
-title: "Proposal: Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
+title: "Proposal"
 ---
 
 Francesca LoPresti, Maren Stewart-Tanner, Providence Thusabantu, El Davis-Greene
