@@ -2,4 +2,12 @@
 title: "Case Study"
 ---
 
-Your case study will go here.
+#Case Study
+**Source**
+*Text analysis of Trump's tweets confirms he writes only the (angrier) Android half* article from "Variance Explained"
+
+**Observations**
+- In this article, we are looking at the difference between tweets from Trump that come from Android vs iPhone. 
+- The article begins with photos/ examples of the tweets.
+- During the results section of the article, the progression goes: code to visualization to discusssion/ analysis of the graphs. 
+- In the actual code, we see examples of classic wrangling such as strings, joins, and the 5 most common verbs (such as filter, select, etc). Effective visualization is also applied: clearly labeled axes, color-blindness friendly palate. There is consistent labeling of the code using #. 
