@@ -11,8 +11,8 @@ project:
 
 
 book:
-  title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name"]
+  title: "Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
+  author: ["Francesca LoPresti", "Maren Stewart-Tanner", "Providence Thusabantu", "El Davis-Greene"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
   # favicon: images/logo.png
@@ -29,7 +29,7 @@ book:
 
 
   sidebar:
-    title: "sidebar title"
+    title: "Demographics and Dating Apps"
     collapse-level: 2
     style: "docked"
     pinned: true
@@ -43,6 +43,8 @@ book:
   - src/appx/case-study.qmd
   - src/appx/MarenS-T.qmd
   - src/appx/Providence-T
+  - src/appx/FrancescaL.qmd
+  - src/ElDG.qmd
 
 
 format:
