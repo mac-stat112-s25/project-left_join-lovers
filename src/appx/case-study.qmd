@@ -1,5 +1,5 @@
 ---
-title: "Case Study: Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
+title: "Case Study"
 ---
 
 #Case Study
