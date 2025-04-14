@@ -48,7 +48,7 @@ book:
     - part: "EDA"
       chapters: 
         - src/EDA/MST_EDA.qmd
-        - src/EDA/FZL_EDA.qmd
+        - src/EDA/EDG_EDA.qmd
 
   appendices:
   - src/appx/proposal.qmd
@@ -85,6 +85,8 @@ format:
 execute:
   cache: true
 #   freeze: auto # remove when using GitHub action to execute code
+
+
 
 editor: 
   mode: source
