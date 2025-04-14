@@ -1,5 +1,5 @@
 ---
-title: "EDA: Maren Stewart-Tanner"
+title: "Maren Stewart-Tanner"
 execute: 
   warning: false
   code: true
