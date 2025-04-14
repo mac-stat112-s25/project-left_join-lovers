@@ -5,8 +5,18 @@ format: html
 
 # Title: The Importance of Teamwork (as proven by science)
 
+<<<<<<< Updated upstream
 Link: https://www.atlassian.com/blog/teamwork/the-importance-of-teamwork
+=======
+#The Importance of Teamwork (as proven by science)
+>>>>>>> Stashed changes
 
+<<<<<<< Updated upstream
+=======
+#The Importance of Teamwork (as proven by science)
+
+>>>>>>> Stashed changes
+**Summary**
 The article explains the importance of distributed work in a workplace setting. Though some used to disagree, teamwork is on the rise, and that is for the better. 
 
 The article then lists 10 benefits of teamwork: 
