@@ -1,7 +1,11 @@
-#Effective Teamwork.  
+---
+title: "Francesca L Effective Teamwork Reading"
+format: html
+---
 
-**Article about Effective Teamwork**
-https://www.forbes.com/sites/rodgerdeanduncan/2024/10/10/how-to-make-teamwork-effective-for-success/
+Link: https://www.forbes.com/sites/rodgerdeanduncan/2024/10/10/how-to-make-teamwork-effective-for-success/
+
+Title: How to Make Teamwork Effective for Success
 
 **Summary**
 - Continuous recognition of good *team* performance. Using words such as "we", "us", and "ours" is better than using "I", "me", or "mine."
