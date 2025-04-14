@@ -28,6 +28,7 @@ head(dating_app_data)
 str(dating_app_data)
 ```
 
+<<<<<<< Updated upstream
 ```{r}
 #Reminder: one of our main questions for this project centers around sexual orientation and the factors that may give evidence to what the user's "app mentality" looks like. To do this, it may be helpful to *first* investigate this data set based on different sexual orientations. 
 
@@ -121,4 +122,6 @@ dating_app_data |>
         y = "Density")
 ```
 
+=======
+>>>>>>> Stashed changes
 
