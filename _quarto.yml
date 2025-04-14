@@ -48,6 +48,7 @@ book:
     - part: "EDA"
       chapters: 
         - src/EDA/MST_EDA.qmd
+        - src/EDA/EDG_EDA.qmd
 
   appendices:
   - src/appx/proposal.qmd
