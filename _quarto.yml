@@ -40,14 +40,14 @@ book:
     
     - part: "Effective Teamwork Readings"
       chapters: 
-      - src/appx/MarenS-T.qmd
+      - src/appx/Maren-ST.qmd
       - src/appx/Providence-T.qmd
       - src/appx/FrancescaL.qmd
       - src/appx/ElDG.qmd
     
     - part: "EDA"
       chapters: 
-        - src/EDA/MST_EDA.qmd
+        - src/EDA/Maren-ST.qmd
         - src/EDA/FZL_EDA.qmd
 
   appendices:

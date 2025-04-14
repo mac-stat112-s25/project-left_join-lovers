@@ -1,6 +1,10 @@
 ---
 title: "Maren Stewart-Tanner"
 format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
 ---
 
 **Title: The Importance of Teamwork (as proven by science)**
