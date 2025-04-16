@@ -49,6 +49,15 @@ book:
       chapters: 
         - src/EDA/Maren-ST.qmd
         - src/EDA/FZL_EDA.qmd
+    - part: Analysis
+      chapters: 
+        - analysis/income.qmd
+        - analysis/location.qmd
+        - analysis/gender.qmd
+        - analysis/orientation.qmd
+        - analysis/tags.qmd
+        - analysis/education.qmd
+
 
   appendices:
   - src/appx/proposal.qmd
