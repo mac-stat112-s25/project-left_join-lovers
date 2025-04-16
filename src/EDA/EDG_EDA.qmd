@@ -67,7 +67,7 @@ What is the most common interest tag?
 ```{r}
 library(stringr)
 
-common_tags <- c("music", "hiking", "movies", "travel", "fitness", "food", "books", "dancing", "photography", "art", "tattoos", "yoga", "pets", "DIY")
+common_tags <- c("music", "hiking", "movies", "travel", "fitness", "food", "books", "dancing", "photography", "art", "tattoos", "yoga", "pets", "DIY", "traveling", "languages", "writing", "painting", "coding")
 
 tag_counts <- sapply(common_tags, function(tag) sum(str_detect(dating_app_data$interest_tags, tag)))
 
