@@ -42,14 +42,15 @@ book:
       chapters: 
       - src/appx/Maren-ST.qmd
       - src/appx/Providence-T.qmd
-      - src/appx/FrancescaL.qmd
+      - src/appx/Francesca-L.qmd
       - src/appx/ElDG.qmd
     
     - part: "EDA"
       chapters: 
-<<<<<<< HEAD
         - src/EDA/Maren-ST.qmd
-        - src/EDA/FZL_EDA.qmd
+        - src/EDA/Francesca-L.qmd
+        - src/EDA/EDG_EDA.qmd
+  
     - part: Analysis
       chapters: 
         - analysis/income.qmd
@@ -58,12 +59,7 @@ book:
         - analysis/orientation.qmd
         - analysis/tags.qmd
         - analysis/education.qmd
-
-=======
-        - src/EDA/MST_EDA.qmd
-        - src/EDA/EDG_EDA.qmd
->>>>>>> 5c9b24ebfb8808e4024d38bb195ade6f8fe148cd
-
+        
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
