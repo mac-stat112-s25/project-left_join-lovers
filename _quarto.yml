@@ -47,6 +47,7 @@ book:
     
     - part: "EDA"
       chapters: 
+<<<<<<< HEAD
         - src/EDA/Maren-ST.qmd
         - src/EDA/FZL_EDA.qmd
     - part: Analysis
@@ -58,6 +59,10 @@ book:
         - analysis/tags.qmd
         - analysis/education.qmd
 
+=======
+        - src/EDA/MST_EDA.qmd
+        - src/EDA/EDG_EDA.qmd
+>>>>>>> 5c9b24ebfb8808e4024d38bb195ade6f8fe148cd
 
   appendices:
   - src/appx/proposal.qmd
@@ -94,6 +99,8 @@ format:
 execute:
   cache: true
 #   freeze: auto # remove when using GitHub action to execute code
+
+
 
 editor: 
   mode: source
