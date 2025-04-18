@@ -1,5 +1,111 @@
 ---
 title: "Sexual Orientation"
 format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
 ---
 
+```{r}
+library(tidyverse)
+library(here)
+dating_app_data <- read_csv(here("data","dating_app_behavior_dataset.csv"))
+```
+
+```{r}
+#Specifying subjects to non-straight men... how do non-straight men compare against straight men in terms of app-usage?
+
+dating_app_data |>
+  filter(gender == "Male") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by Non-Straight vs Straight Men", 
+        x = "Time Spent on App", 
+        y = "Density")
+
+#Ooh! Something interesting! I wonder how that changes with female-identifying folks...
+```
+
+**This visualization demonstrates that while comparable, queer men generally have steadier rates of app usage at all levels of time spent on the app, where as straight men have a sizeable peak right before 150 minutes spent on the app. While there a fewer straight men that spend more time than 150 minutes on the app, there are a significant amount of queer men in this data set that spend more than 150 minutes. Tl;dr: within the heavy users of this app (<150), there is a higher density of straight men until ~240 minutes, in which queer men become the predominant users.**
+
+```{r}
+#Same thing but for females
+dating_app_data |>
+  filter(gender == "Female") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "App Usage by Non-Straight vs Straight Women", 
+        x = "Time Spent on App", 
+        y = "Density")
+```
+
+**Compared to men, there is a less noticeable distinction between queer and straight women. However, like the previous visualization, there is a higher density of queer women that spend more time on the app than queer men.**
+
+```{r}
+#Are queer men that use this dating app choosier the more time they spend on the app?
+
+dating_app_data |>
+  mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  filter(gender == "Male", 
+         app_usage_time_min >= 150,
+         straight == FALSE) |>
+  ggplot(aes(x = app_usage_time_min, y = swipe_right_ratio))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()+ 
+  labs (title = "Swipe Right Ratio of Queer Men by App Usage", 
+        x = "Time Spent on App", 
+        y = "Swipe Right Ratio")
+```
+
+
+```{r}
+#Are queer women that use this dating app choosier the more time they spend on the app?
+dating_app_data |>
+  mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  filter(gender == "Female", 
+         app_usage_time_min >= 150,
+         straight == TRUE) |>
+  ggplot(aes(x = app_usage_time_min, y = swipe_right_ratio))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()+ 
+  labs (title = "Swipe Right Ratio of Queer Men by App Usage", 
+        x = "Time Spent on App", 
+        y = "Swipe Right Ratio")
+```
+
+
+**This visualization demonstrates that there is almost no change in the swipe right ratio for queer men as you increase time spent on the app. While there were slight changes based on gender identity and straight vs non-straight, the low rate of negative change does not demonstrate a significant correlation.**
+
+```{r}
+library(ggthemes)
+```
+
+
+```{r}
+#Sexual orientation by date success?
+dating_app_data |>
+  mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  filter(gender == "Female") |>
+  ggplot(aes(x = match_outcome, fill = sexual_orientation)) +
+  geom_bar(position = "dodge") +
+  facet_wrap(~match_outcome) +
+  theme_minimal() +
+  labs(
+    title = "Swipe Outcome by Sexual Orientation", 
+    x = "Percentage", 
+    y = "Swipe Outcome", 
+    fill = "Sexual Orientation") 
+```
+
+**This visualization demonstrates few distinctions between "successful" dates and sexual orientation, with maybe a distinction in relationship formed for bisexuals.**
