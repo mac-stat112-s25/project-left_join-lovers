@@ -11,8 +11,8 @@ project:
 
 
 book:
-  title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name"]
+  title: "Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
+  author: ["Francesca LoPresti", "Maren Stewart-Tanner", "Providence Thusabantu", "El Davis-Greene"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
   # favicon: images/logo.png
@@ -29,7 +29,7 @@ book:
 
 
   sidebar:
-    title: "sidebar title"
+    title: "Demographics and Dating Apps"
     collapse-level: 2
     style: "docked"
     pinned: true
@@ -37,7 +37,29 @@ book:
 
   chapters:
     - index.qmd
-
+    
+    - part: "Effective Teamwork Readings"
+      chapters: 
+      - src/appx/Maren-ST.qmd
+      - src/appx/Providence-T.qmd
+      - src/appx/Francesca-L.qmd
+      - src/appx/ElDG.qmd
+    
+    - part: "EDA"
+      chapters: 
+        - src/EDA/Maren-ST.qmd
+        - src/EDA/Francesca-L.qmd
+        - src/EDA/EDG_EDA.qmd
+  
+    - part: Analysis
+      chapters: 
+        - analysis/income.qmd
+        - analysis/location.qmd
+        - analysis/gender.qmd
+        - analysis/orientation.qmd
+        - analysis/tags.qmd
+        - analysis/education.qmd
+        
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
