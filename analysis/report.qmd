@@ -38,3 +38,53 @@ ggplot(aes(y = gender, x = count, fill = gender)) +
   scale_fill_viridis_d()
 ```
 So nonbinary users and those who prefer not to say are the largest groups categorized as Addicted.
+
+### Location
+
+How does location (i.e. remote area, metro, etc) impact app dependence? 
+```{r}
+ggplot(dating_app_data, aes(fill=location_type,x=app_usage_time_min)) +
+         geom_density(alpha = 0.5) +
+  scale_fill_viridis_d() +
+  labs(
+    title = "Density of App Usage Time by Location Type",
+    x = "App Usage Time (minutes)",
+    y = "Density"
+  ) +
+  theme_minimal()
+library(ggplot2)
+
+dating_app_data |>
+  group_by(location_type) |>
+  mutate(location_mean_usage = mean(app_usage_time_min)) |>
+  ggplot(aes(x = location_type, y = location_mean_usage, fill = location_type)) +  
+  geom_col() +
+  scale_fill_viridis_d()
+```
+The density plot above shows the distribution of app usage time across different location types. From the plot, we can see that metro users tend to have a higher concentration of longer app usage times compared to those from more remote areas. This suggests that users in urban locations might spend more time on dating apps, which could possibly be due to greater social interaction or availability of matches.
+
+In the bar chart above, we can see the average app usage time for different location types. Metro users consistently show higher average usage compared to those in remote areas, further supporting the idea that people in more densely populated areas tend to engage with dating apps more frequently.
+
+How does location type influence the number of matches or successful interactions users report?
+```{r}
+library(ggplot2)
+
+ggplot(dating_app_data, aes(x = location_type, y = mutual_matches, fill = location_type)) +
+  geom_boxplot(alpha = 0.7) +
+  scale_fill_viridis_d() +  # Apply viridis color palette
+  labs(
+    title = "Mutual Matches by Location Type",
+    x = "Location Type",
+    y = "Number of Mutual Matches"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold", size = 14),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12)
+  )
+
+```
+The boxplot above displays the distribution of mutual matches by location type. Metro users tend to have a wider range of mutual matches, with a few high outliers. This indicates that some users in urban areas may have an exceptional number of successful interactions. On the other hand, users in remote areas appear to have more concentrated and lower values for mutual matches, which suggests a potentially smaller dating pool or fewer interactions.
+
