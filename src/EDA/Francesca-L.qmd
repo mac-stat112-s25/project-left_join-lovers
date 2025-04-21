@@ -122,6 +122,4 @@ dating_app_data |>
         y = "Density")
 ```
 
-=======
->>>>>>> Stashed changes
 
