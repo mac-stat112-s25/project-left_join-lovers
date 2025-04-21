@@ -65,7 +65,7 @@ dating_app_data |>
              alpha = 0.2))+
   geom_density()+
   theme_minimal()+ 
-  labs (title = "Distribution of App Usage by Sexual Orientation", 
+  labs (title = "Distribution of App Usage by Sexual Orientation of Male Users", 
         x = "Time Spent on App", 
         y = "Density")+ 
   scale_fill_viridis_d()    
