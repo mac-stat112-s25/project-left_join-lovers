@@ -7,6 +7,9 @@ format: html
 library(tidyverse)
 ```
 
+```{r}
+dating_app_data <- read.csv('../data/dating_app_behavior_dataset.csv')
+```
 
 How does location (i.e. remote area, metro, etc) impact app dependence? 
 ```{r}

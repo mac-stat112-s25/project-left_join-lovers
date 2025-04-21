@@ -8,8 +8,6 @@ project:
   type: book
   output-dir: docs
 
-
-
 book:
   title: "Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
   author: ["Francesca LoPresti", "Maren Stewart-Tanner", "Providence Thusabantu", "El Davis-Greene"]
@@ -51,7 +49,7 @@ book:
         - src/EDA/Francesca-L.qmd
         - src/EDA/EDG_EDA.qmd
   
-    - part: "Analysis"
+    - part: Analysis
       chapters: 
         - analysis/income.qmd
         - analysis/location.qmd
@@ -63,8 +61,6 @@ book:
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
-
-
 
 format:
   html:
