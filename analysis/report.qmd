@@ -15,7 +15,7 @@ dating_app_data <- read.csv('../data/dating_app_behavior_dataset.csv')
 
 ### Gender
 
-let's look at user labels. 
+Let's look at user labels. 
 
 ```{r}
 dating_app_data |>
@@ -26,7 +26,7 @@ dating_app_data |>
   labs(fill = "Usage", y = "Gender") +
   scale_fill_viridis_d() 
 ```
-The visualization above indicates that the largest usage tag for every gender is "Extreme user". Now lets look at the "Addicted" category.
+**The visualization above indicates that the largest usage tag for every gender is "Extreme user". Now lets look at the "Addicted" category.**
 
 ```{r, fig.height=5, fig.width=10}
 dating_app_data |>
@@ -37,4 +37,94 @@ ggplot(aes(y = gender, x = count, fill = gender)) +
   geom_col() +
   scale_fill_viridis_d()
 ```
-So nonbinary users and those who prefer not to say are the largest groups categorized as Addicted.
+**So nonbinary users and those who prefer not to say are the largest groups categorized as Addicted.**
+
+### Sexual Orientation
+*Note: for this analysis, NB = Non-binary users and PNTS = users that "Prefer Not to Say" for their gender identity.* 
+
+```{r}
+#| fig-cap: A density visualization depicting the relationship between time spent on app sexual orientation for the gender identities that had the highest rates of "addicted" users as per our analysis with the gender identity factor. 
+#| fig-alt: A density visualization depicting the relationship between time spent on app sexual orientation for the gender identities that had the highest rates of "addicted" users as per our analysis with the gender identity factor. 
+
+dating_app_data |>
+  filter(app_usage_time_label == "Addicted",
+         gender %in% c("Non-binary", "Prefer Not to Say")) |>
+  ggplot(aes(y = app_usage_time_min,
+             fill = sexual_orientation,
+             alpha = 0.2))+
+  facet_wrap(~sexual_orientation)+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by Sexual Orientation for NB and PNTS Users", 
+        y = "Time Spent on App", 
+        x = "Density")+ 
+  guides(alpha = "none")+
+  scale_fill_viridis_d()    
+```
+**This visualization demonstrates that there are stark distinctions between time spent on an **
+
+```{r}
+#Looking at non-straight and straight users.
+
+#| fig-cap: Insert. 
+#| fig-alt: Insert.
+
+dating_app_data |>
+  filter( gender %in% c("Non-binary", "Prefer Not to Say")) |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by (Non)Straight NB and PNTS Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight")+ 
+  guides(alpha = "none")+
+  scale_fill_viridis_d()    
+```
+**Insert blurb here**
+
+```{r}
+#How does this relationship change if we look at users that identify as male?
+#| fig-cap: A density plot depicting the. 
+#| fig-alt: A scatter plot depicting the.
+
+dating_app_data |>
+  filter(gender == "Male") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by (Non)Straight Male Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight") + 
+  guides(alpha = "none") +
+  scale_fill_viridis_d()   
+```
+**Insert blurb here.**
+
+```{r}
+#| fig-cap: A density plot depicting the. 
+#| fig-alt: A scatter plot depicting the.
+
+dating_app_data |>
+  filter(gender == "Female") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "App Usage by (Non)Straight Female Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight")+ 
+  guides(alpha = "none") +
+  scale_fill_viridis_d() 
+```
+**Insert Blurb Here**
