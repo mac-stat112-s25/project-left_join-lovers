@@ -16,6 +16,9 @@ dating_app_data <- read_csv(here("data","dating_app_behavior_dataset.csv"))
 ```{r}
 #Specifying subjects to non-straight men... how do non-straight men compare against straight men in terms of app-usage?
 
+#| fig-cap: A density plot depicting the . 
+#| fig-alt: A scatter plot depicting the relationship between run time and audience ratings of popular Pixar films.
+
 dating_app_data |>
   filter(gender == "Male") |>
    mutate(straight = str_detect(sexual_orientation, "Straight")) |>
@@ -26,7 +29,8 @@ dating_app_data |>
   theme_minimal()+ 
   labs (title = "Distribution of App Usage by Non-Straight vs Straight Men", 
         x = "Time Spent on App", 
-        y = "Density")
+        y = "Density")+ 
+  scale_fill_viridis_d()    
 
 #Ooh! Something interesting! I wonder how that changes with female-identifying folks...
 ```
@@ -45,10 +49,28 @@ dating_app_data |>
   theme_minimal()+ 
   labs (title = "App Usage by Non-Straight vs Straight Women", 
         x = "Time Spent on App", 
-        y = "Density")
+        y = "Density")+ 
+  scale_fill_viridis_d()    
 ```
 
 **Compared to men, there is a less noticeable distinction between queer and straight women. However, like the previous visualization, there is a higher density of queer women that spend more time on the app than queer men.**
+
+```{r}
+#Don't control for "straight" ...what happens?
+
+dating_app_data |>
+  filter(gender == "Male") |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = sexual_orientation,
+             alpha = 0.2))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by Sexual Orientation", 
+        x = "Time Spent on App", 
+        y = "Density")+ 
+  scale_fill_viridis_d()    
+```
+
 
 ```{r}
 #Are queer men that use this dating app choosier the more time they spend on the app?
@@ -64,7 +86,8 @@ dating_app_data |>
   theme_minimal()+ 
   labs (title = "Swipe Right Ratio of Queer Men by App Usage", 
         x = "Time Spent on App", 
-        y = "Swipe Right Ratio")
+        y = "Swipe Right Ratio")+ 
+  scale_fill_viridis_d()    
 ```
 
 
@@ -91,15 +114,13 @@ dating_app_data |>
 library(ggthemes)
 ```
 
-
 ```{r}
 #Sexual orientation by date success?
 dating_app_data |>
   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
   filter(gender == "Female") |>
-  ggplot(aes(x = match_outcome, fill = sexual_orientation)) +
+  ggplot(aes(y = match_outcome, fill = sexual_orientation)) +
   geom_bar(position = "dodge") +
-  facet_wrap(~match_outcome) +
   theme_minimal() +
   labs(
     title = "Swipe Outcome by Sexual Orientation", 
