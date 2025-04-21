@@ -72,6 +72,14 @@ ggplot(aes(y=match_outcome, fill = gender)) +
 ```
 **In most outcomes, nonbinary users had more occurrences for each. However, for date happened, blocked, or mutual match, those who preferred not to say had more of those outcomes.**
 
+```{r}
+dating_app_data |>
+  filter(gender == c("Male", "Female")) |>
+  ggplot(aes(y=match_outcome, fill = gender)) +
+  geom_bar(position = "dodge")
+```
+
+
 
 ```{r, fig.height=5, fig.length=10}
 # dating_app_data |>
