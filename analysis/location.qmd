@@ -2,6 +2,12 @@
 title: "Location"
 format: html
 ---
+
+```{r}
+library(tidyverse)
+```
+
+
 How does location (i.e. remote area, metro, etc) impact app dependence? 
 ```{r}
 ggplot(dating_app_data, aes(fill=location_type,x=app_usage_time_min)) +
