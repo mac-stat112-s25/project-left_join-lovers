@@ -1,13 +1,8 @@
 ---
 title: "Maren Stewart-Tanner"
-execute: 
-  warning: false
-  code: true
 fig-height: 3
 fig-width: 5
 fig-align: center
-code-fold: false
-number-sections: false
 ---
 
 ## Data Import
