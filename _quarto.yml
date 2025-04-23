@@ -59,9 +59,6 @@ book:
         - analysis/orientation.qmd
         - analysis/tags.qmd
         - analysis/education.qmd
-    - part: "Storytelling"
-      chapters: 
-        - analysis/report.qmd
         
   appendices:
   - src/appx/proposal.qmd
