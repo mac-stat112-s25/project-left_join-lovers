@@ -1,10 +1,5 @@
 ---
 title: "Sexual Orientation"
-format: html
-execute: 
-  echo: false
-  warning: false
-  error: false
 ---
 
 ```{r}

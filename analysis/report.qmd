@@ -2,13 +2,11 @@
 title: "Report"
 format: html
 ---
-**Load Packages**
 ```{r}
 library(tidyverse)
 library(viridisLite)
 ```
 
-**Load dataset**
 ```{r}
 dating_app_data <- read.csv('../data/dating_app_behavior_dataset.csv')
 ```
