@@ -2,6 +2,7 @@
 title: "Report"
 format: html
 ---
+
 ```{r}
 library(tidyverse)
 library(viridisLite)

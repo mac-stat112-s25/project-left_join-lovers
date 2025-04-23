@@ -4,10 +4,193 @@ execute:
   echo: true      # change to true to show the code
 code-fold: false  # change to true to fold the code chunks
 ---
+**Storytelling**
 
-Your report will go here.
+
+
+
+
+
+
+**Visualizations**
 
 ```{r}
-# this is a test code
+library(tidyverse)
+library(viridisLite)
 ```
+
+```{r}
+dating_app_data <- read.csv('../data/dating_app_behavior_dataset.csv')
+```
+
+### Gender
+
+Let's look at user labels. 
+
+```{r}
+dating_app_data |>
+  mutate(app_usage_time_label = fct_relevel(app_usage_time_label,
+            "Addicted", "Extreme User", "High", "Moderate", "Barely", "Low", "Very Low")) |>
+  ggplot(aes(y = gender, fill = app_usage_time_label)) +
+  geom_bar(position = "fill") +
+  labs(fill = "Usage", y = "Gender") +
+  scale_fill_viridis_d() 
+```
+The visualization above indicates that the largest usage tag for every gender is "Extreme user". Now lets look at the "Addicted" category.
+
+```{r, fig.height=5, fig.width=10}
+dating_app_data |>
+  filter(app_usage_time_label == "Addicted") |>
+  group_by(gender) |>
+  summarize(count = n()) |>
+ggplot(aes(y = gender, x = count, fill = gender)) +
+  geom_col() +
+  scale_fill_viridis_d()
+```
+So nonbinary users and those who prefer not to say are the largest groups categorized as Addicted.
+
+### Sexual Orientation
+*Note: for this analysis, NB = Non-binary users and PNTS = users that "Prefer Not to Say" for their gender identity.* 
+
+```{r}
+#| fig-cap: A density visualization depicting the relationship between time spent on app sexual orientation for the gender identities that had the highest rates of "addicted" users as per our analysis with the gender identity factor. 
+#| fig-alt: A density visualization depicting the relationship between time spent on app sexual orientation for the gender identities that had the highest rates of "addicted" users as per our analysis with the gender identity factor. 
+
+dating_app_data |>
+  filter(app_usage_time_label == "Addicted",
+         gender %in% c("Non-binary", "Prefer Not to Say")) |>
+  ggplot(aes(y = app_usage_time_min,
+             fill = sexual_orientation,
+             alpha = 0.2))+
+  facet_wrap(~sexual_orientation)+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by Sexual Orientation for NB and PNTS Users", 
+        y = "Time Spent on App", 
+        x = "Density")+ 
+  guides(alpha = "none")+
+  scale_fill_viridis_d()    
+```
+These 8 different density plots demonstrate the difference in time spent on this dating app between users of different sexual orientations. In this preliminary analysis, we see that there are a few sexual orientations that stand out for having higher densities at higher time spent on the dating app. Specifically, users that identify as Straight have a density of 0.020 at around ~155 minutes. Queer users also have a density peak around 165 minutes, reaching a density of ~0.019.
+
+```{r}
+#Looking at non-straight and straight users.
+
+#| fig-cap: Insert. 
+#| fig-alt: Insert.
+
+dating_app_data |>
+  filter( gender %in% c("Non-binary", "Prefer Not to Say")) |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by (Non)Straight NB and PNTS Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight")+ 
+  guides(alpha = "none")+
+  scale_fill_viridis_d()    
+```
+Controlling for just users who marked Non-binary or Prefer not to say as their gender identity, this visualization compares users who are straight with those who are not. For straight users, there is a significant dip around 100 minutes and a higher rate of usage around 200 minutes which could possibly indicate a higher dependency on this dating app for straight NB and PNTS users than others.
+
+```{r}
+#How does this relationship change if we look at users that identify as male?
+#| fig-cap: A density plot depicting the. 
+#| fig-alt: A scatter plot depicting the.
+
+dating_app_data |>
+  filter(gender == "Male") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by (Non)Straight Male Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight") + 
+  guides(alpha = "none") +
+  scale_fill_viridis_d()   
+```
+Shifting focus slightly, there is a notable difference in time spent on app between non straight and straight male users. There is a peak in use around 180 minutes for straight males, reaching a density of ~0.004 while non straight males have a density of ~0.0035 at the same amount of time.
+
+```{r}
+#| fig-cap: A density plot depicting the. 
+#| fig-alt: A scatter plot depicting the.
+
+dating_app_data |>
+  filter(gender == "Female") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "App Usage by (Non)Straight Female Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight")+ 
+  guides(alpha = "none") +
+  scale_fill_viridis_d() 
+```
+Compared to the last visualization, there is less of a distinction between straight and non straight users for female users. However, there is non-straight female users consistently outnumber straight female users beginning at 150 minutes. This may possibly indicate that non-straight females spend more time on the app thatn straight females.
+
+
+### Location
+
+How does location (i.e. remote area, metro, etc) impact app dependence? 
+```{r}
+ggplot(dating_app_data, aes(fill=location_type,x=app_usage_time_min)) +
+         geom_density(alpha = 0.5) +
+  scale_fill_viridis_d() +
+  labs(
+    title = "Density of App Usage Time by Location Type",
+    x = "App Usage Time (minutes)",
+    y = "Density"
+  ) +
+  theme_minimal()
+library(ggplot2)
+
+dating_app_data |>
+  group_by(location_type) |>
+  mutate(location_mean_usage = mean(app_usage_time_min)) |>
+  ggplot(aes(x = location_type, y = location_mean_usage, fill = location_type)) +  
+  geom_col() +
+  scale_fill_viridis_d()
+```
+The density plot above shows the distribution of app usage time across different location types. From the plot, we can see that metro users tend to have a higher concentration of longer app usage times compared to those from more remote areas. This suggests that users in urban locations might spend more time on dating apps, which could possibly be due to greater social interaction or availability of matches.
+
+In the bar chart above, we can see the average app usage time for different location types. Metro users consistently show higher average usage compared to those in remote areas, further supporting the idea that people in more densely populated areas tend to engage with dating apps more frequently.
+
+How does location type influence the number of matches or successful interactions users report?
+```{r}
+library(ggplot2)
+
+ggplot(dating_app_data, aes(x = location_type, y = mutual_matches, fill = location_type)) +
+  geom_boxplot(alpha = 0.7) +
+  scale_fill_viridis_d() +
+  labs(
+    title = "Mutual Matches by Location Type",
+    x = "Location Type",
+    y = "Number of Mutual Matches"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold", size = 14),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12)
+  )
+
+```
+The boxplot above displays the distribution of mutual matches by location type. Metro users tend to have a wider range of mutual matches, with a few high outliers. This indicates that some users in urban areas may have an exceptional number of successful interactions. On the other hand, users in remote areas appear to have more concentrated and lower values for mutual matches, which suggests a potentially smaller dating pool or fewer interactions.
+
+
+
+
+
 
