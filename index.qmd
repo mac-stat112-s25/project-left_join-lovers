@@ -15,13 +15,12 @@ code-fold: false  # change to true to fold the code chunks
 **Visualizations**
 
 ```{r}
+dating_app_data <- read.csv("data/dating_app_behavior_dataset.csv")
+
 library(tidyverse)
 library(viridisLite)
 ```
 
-```{r}
-dating_app_data <- read.csv('../data/dating_app_behavior_dataset.csv')
-```
 
 ### Gender
 
