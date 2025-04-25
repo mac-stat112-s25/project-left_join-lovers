@@ -11,7 +11,7 @@ library(viridisLite)
 dating_app_data <- read.csv("data/dating_app_behavior_dataset.csv")
 ```
 
-# Storytelling
+# Introduction
 
 In the modern dating scene, the swipe has become a symbol of possibility, rejection, and everything in between.
 But behind every swipe lies a data point---a reflection of who we are, what we seek, and how our identities shape our digital interactions.
@@ -27,9 +27,9 @@ This dataset used in this primary study was a simulation of what a dating app co
 This data was extracted from Kaggle  We hope our insights will show meaningful patterns which may be used to further develop dating apps.
 Our aim is to understand how identity factors relate to app dependency and engagement outcomes, and ultimately explaining broader patterns of human behavior in virtual spaces.
 
-## Analysis
+# Analysis
 
-#### Gender Identity
+## Gender Identity
 
 We begin with a broad view of how gender identity intersects with app usage levels.
 
@@ -64,7 +64,7 @@ Here, *Non-binary* (NB) users and those who *Prefer Not to Say* (PNTS) are the m
 This is a striking finding and may reflect the fact that NB and PNTS users often find more inclusive spaces online than offline, leading to increased app engagement (Miller, 2015).
 Dating apps may act as rare safe zones for connection, identity exploration, and validation.
 
-#### Sexual Orientation
+## Sexual Orientation
 
 Focusing now on NB and PNTS users, we examine how sexual orientation affects app usage time.
 
@@ -116,7 +116,7 @@ dating_app_data |>
 Interestingly, *Straight* users within NB/PNTS groups show a second peak around 200 minutes, suggesting a higher dependency or reliance on the app.
 This could stem from marginalization within both queer and heteronormative spaces, leading to prolonged searching or browsing behavior.
 
-#### **What About Binary Genders?**
+### What About Binary Genders?
 
 How do these patterns play out among binary gender groups?
 
@@ -166,7 +166,9 @@ dating_app_data |>
 Among female users, non-straight individuals spend more time on the app, especially past the 150-minute mark.
 This is may be due to the fact that non-straight female users consistently outnumber straight female users beginning at 150 minutes.
 
-#### **Does where you live change how you date?**
+## Location
+
+### Does where you live change how you date?
 
 \[insert plot\]
 
@@ -180,7 +182,7 @@ When comparing average usage time:
 Metro users consistently lead, reinforcing the idea that urban environments foster more digital dating activity whether due to convenience or social norms.
 This also could possibly be due to greater social interaction or availability of matches which further supports the idea that people in more densely populated areas tend to engage with dating apps more frequently.
 
-#### **Who's Really Matching?**
+### Who's Really Matching?
 
 \[insert plot here\]
 
@@ -188,7 +190,7 @@ Our final plot examines mutual matches across location types.
 Again, metro users have more variability and higher maximum matches, suggesting greater chances of success in densely populated areas.
 The opposite is also true for users in remote areas who appear to have more concentrated and lower values for mutual matches, which suggests a potentially smaller dating pool or fewer interactions.\
 
-## **Alternative Explanations**
+## Alternative Explanations
 
 While the data tells a compelling story, alternative interpretations should be considered:
 
@@ -198,7 +200,7 @@ While the data tells a compelling story, alternative interpretations should be c
 
 3.  Psychological dependency like fear of missing out or gamification---may inflate time spent regardless of real connection.
 
-## **Conclusion:** What the Swipe Says About Us!
+# Conclusion: What the Swipe Says About Us!
 
 Dating apps are more than platforms for meeting people---they're mirrors of modern identity.
 Our analysis showed:
@@ -211,7 +213,7 @@ Our analysis showed:
 
 To sum it all up, dating apps don't just reveal what we want---they reflect who we are becoming in a digital age.
 
-## **References**
+# References
 
 Huynh, H.
 (2018).
