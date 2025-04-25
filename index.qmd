@@ -68,14 +68,50 @@ Dating apps may act as rare safe zones for connection, identity exploration, and
 
 Focusing now on NB and PNTS users, we examine how sexual orientation affects app usage time.
 
-\[insert graph\]
+```{r}
+#| fig-cap: A density visualization depicting the relationship between time spent on app sexual orientation for the gender identities that had the highest rates of "addicted" users as per our analysis with the gender identity factor. 
+#| fig-alt: A density visualization depicting the relationship between time spent on app sexual orientation for the gender identities that had the highest rates of "addicted" users as per our analysis with the gender identity factor. 
+
+dating_app_data |>
+  filter(app_usage_time_label == "Addicted",
+         gender %in% c("Non-binary", "Prefer Not to Say")) |>
+  ggplot(aes(y = app_usage_time_min,
+             fill = sexual_orientation,
+             alpha = 0.2))+
+  facet_wrap(~sexual_orientation)+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by Sexual Orientation for NB and PNTS Users", 
+        y = "Time Spent on App", 
+        x = "Density")+ 
+  guides(alpha = "none")+
+  scale_fill_viridis_d()    
+```
 
 These plots show that Straight and Queer users within NB/PNTS categories peak in app usage between 55--165 minutes.
 The peaks reflect substantial engagement, possibly driven by the limited dating options in offline settings for these orientations (LeFebvre, 2018).
 
 To test this further, we categorize users as Straight vs. Non-Straight:
 
-\[insert graph\]
+```{r}
+#| fig-cap: A density plot that demonstrates the density of straight vs nonstraight non-binary and "prefer not to say" users as per the minutes they spend on the dating app. 
+#| fig-alt: A density plot that demonstrates the density of straight vs nonstraight non-binary and "prefer not to say" users as per the minutes they spend on the dating app. 
+
+dating_app_data |>
+  filter( gender %in% c("Non-binary", "Prefer Not to Say")) |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by (Non)Straight NB and PNTS Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight")+ 
+  guides(alpha = "none")+
+  scale_fill_viridis_d()    
+```
 
 Interestingly, *Straight* users within NB/PNTS groups show a second peak around 200 minutes, suggesting a higher dependency or reliance on the app.
 This could stem from marginalization within both queer and heteronormative spaces, leading to prolonged searching or browsing behavior.
@@ -84,11 +120,48 @@ This could stem from marginalization within both queer and heteronormative space
 
 How do these patterns play out among binary gender groups?
 
-\[insert plot\]
+```{r}
+#How does this relationship change if we look at users that identify as male?
+#| fig-cap: A density plot depicting the time usage in minutes of male, straight and male, non-straight users on the dating app.
+#| fig-alt: A density plot depicting the time usage in minutes of male, straight and male, non-straight users on the dating app..
+
+dating_app_data |>
+  filter(gender == "Male") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by (Non)Straight Male Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight") + 
+  guides(alpha = "none") +
+  scale_fill_viridis_d()   
+```
 
 For male users, *Straight* individuals spend slightly more time on the app (peak at \~180 mins), possibly due to cultural norms around men being expected to initiate conversations or compete for attention.
 
-\[insert graph here\]
+```{r}
+#| fig-cap: A density plot depicting the time usage in minutes of female, straight vs female, non-straight users on the dating app. 
+#| fig-alt: A density plot depicting the time usage in minutes of female, straight vs female, non-straight users on the dating app. 
+
+dating_app_data |>
+  filter(gender == "Female") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "App Usage by (Non)Straight Female Users", 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "User Identifies as Straight")+ 
+  guides(alpha = "none") +
+  scale_fill_viridis_d() 
+```
 
 Among female users, non-straight individuals spend more time on the app, especially past the 150-minute mark.
 This is may be due to the fact that non-straight female users consistently outnumber straight female users beginning at 150 minutes.
@@ -107,7 +180,7 @@ When comparing average usage time:
 Metro users consistently lead, reinforcing the idea that urban environments foster more digital dating activity whether due to convenience or social norms.
 This also could possibly be due to greater social interaction or availability of matches which further supports the idea that people in more densely populated areas tend to engage with dating apps more frequently.
 
-#### **Who\'s Really Matching?**
+#### **Who's Really Matching?**
 
 \[insert plot here\]
 
@@ -127,16 +200,16 @@ While the data tells a compelling story, alternative interpretations should be c
 
 ## **Conclusion:** What the Swipe Says About Us!
 
-Dating apps are more than platforms for meeting people---they\'re mirrors of modern identity.
+Dating apps are more than platforms for meeting people---they're mirrors of modern identity.
 Our analysis showed:
 
--   NB and PNTS users are disproportionately labeled as \"Addicted.\"
+-   NB and PNTS users are disproportionately labeled as "Addicted."
 
 -   Urban life correlates with more usage and higher success rates.
 
 -   Patterns differ by gender, sexuality, and geography---but the need for connection unites them all.
 
-To sum it all up, dating apps don\'t just reveal what we want---they reflect who we are becoming in a digital age.
+To sum it all up, dating apps don't just reveal what we want---they reflect who we are becoming in a digital age.
 
 ## **References**
 
@@ -154,7 +227,7 @@ https://doi.org/10.1177/0265407517706419
 
 Miller, B.
 (2015).
-\"They\'re the modern-day gay bar\": Exploring the uses and gratifications of social networks for men who have sex with men.
+"They're the modern-day gay bar": Exploring the uses and gratifications of social networks for men who have sex with men.
 Computers in Human Behavior, 51(Part A), 476--482.
 https://doi.org/10.1016/j.chb.2015.05.023
 
