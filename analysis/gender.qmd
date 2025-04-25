@@ -1,14 +1,10 @@
 ---
 title: "Gender"
-format: html
-execute: 
-  echo: false
-  warning: false
-  error: false
 ---
 
 ```{r}
 library(tidyverse)
+library(viridis)
 ```
 
 ```{r}
@@ -22,7 +18,8 @@ dating_app_data |>
   group_by(gender) |>
   summarize(mean_usage = mean(app_usage_time_min)) |>
 ggplot(aes(y=gender, x=mean_usage, fill=gender)) +
-  geom_col()
+  geom_col() +
+  scale_fill_viridis_d() 
 ```
 
 **From this, not much difference can be deciphered. Next, we can examine the usage time labels assigned to each.**
@@ -34,10 +31,11 @@ dating_app_data |>
             "Addicted", "Extreme User", "High", "Moderate", "Barely", "Low", "Very Low")) |>
   ggplot(aes(y = gender, fill = app_usage_time_label)) +
   geom_bar(position = "fill") +
-  labs(fill = "Usage", y = "Gender")
+  labs(fill = "Usage", y = "Gender") +
+  scale_fill_viridis_d() 
 ```
 
-**The visualization above indicates that the largest usage tag for every gender is "extreme user". Let's examine only the extreme user category and see the gender differences.**
+**The visualization above indicates that the largest usage tag for every gender is "extreme user". Let's examine only the "addicted" category and see the gender differences there.**
 
 ```{r, fig.height=5, fig.width=10}
 dating_app_data |>
@@ -45,9 +43,10 @@ dating_app_data |>
   group_by(gender) |>
   summarize(count = n()) |>
 ggplot(aes(y = gender, x = count, fill = gender)) +
-  geom_col()
+  geom_col() +
+  scale_fill_viridis_d()
 ```
-**So nonbinary users and those who prefer not to say are the largest groups categorized as Addicted. Let's see how these gorups interact with the app in other ways.**
+**So nonbinary users and those who prefer not to say are the largest groups categorized as Addicted. Let's see how these groups interact with the app in other ways.**
 
 ```{r}
 dating_app_data |>
@@ -70,8 +69,9 @@ ggplot(aes(y=match_outcome, fill = gender)) +
   geom_bar() +
   facet_wrap( ~gender)
 ```
-**In most outcomes, nonbinary users had more occurrences for each. However, for date happened, blocked, or mutual match, those who preferred not to say had more of those outcomes.**
+**In most app outcomes, nonbinary users had more occurrences for each. However, for date happened, blocked, or mutual match, those who preferred not to say had more of those outcomes.**
 
+**We can also look at men vs. women for app outcomes as follows:**
 ```{r}
 dating_app_data |>
   filter(gender == c("Male", "Female")) |>
@@ -79,12 +79,3 @@ dating_app_data |>
   geom_bar(position = "dodge")
 ```
 
-
-
-```{r, fig.height=5, fig.length=10}
-# dating_app_data |>
-#   mutate(mutual_matches = as.numeric(mutual_matches)) |>
-#   mutate(bio_length)
-# ggplot(aes(y=bio_length, x=mutual_matches)) +
-#   geom_point()
-```

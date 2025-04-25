@@ -8,6 +8,8 @@ project:
   type: book
   output-dir: docs
 
+
+
 book:
   title: "Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
   author: ["Francesca LoPresti", "Maren Stewart-Tanner", "Providence Thusabantu", "El Davis-Greene", "David Manguluti"]
@@ -50,7 +52,7 @@ book:
         - src/EDA/EDG_EDA.qmd
         - src/EDA/David-M.qmd 
   
-    - part: Analysis
+    - part: "Analysis"
       chapters: 
         - analysis/income.qmd
         - analysis/location.qmd
@@ -62,6 +64,8 @@ book:
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
+
+
 
 format:
   html:
@@ -82,6 +86,7 @@ format:
     code-block-border-left: "#1482FA"
     code-tools: true
     page-layout: full
+    code-fold: true
 
   # pdf:
   #   documentclass: scrreprt
@@ -92,7 +97,9 @@ format:
 execute:
   cache: true
 #   freeze: auto # remove when using GitHub action to execute code
-
+  echo: true
+  warning: false
+  error: false
 
 
 editor: 

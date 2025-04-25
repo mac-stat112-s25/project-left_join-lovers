@@ -1,6 +1,9 @@
 ---
 title: "El Davis-Greene"
 format: html
+fig-height: 3
+fig-width: 5
+fig-align: center
 ---
 
 ## Data Import

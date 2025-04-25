@@ -1,13 +1,8 @@
 ---
 title: "EDA: Francesca Z. LoPresti"
-execute: 
-  warning: false
-  code: true
 fig-height: 3
 fig-width: 5
 fig-align: center
-code-fold: false
-number-sections: false
 ---
 
 #Step 1: Import and Know Your Data
