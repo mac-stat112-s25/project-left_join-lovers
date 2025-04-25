@@ -55,7 +55,9 @@ dating_app_data |>
   summarize(count = n()) |>
 ggplot(aes(y = gender, x = count, fill = gender)) +
   geom_col() +
-  scale_fill_viridis_d()
+  scale_fill_viridis_d() +
+  labs(y="Gender", fill="Gender") +
+  theme(legend.position = "none")
 ```
 
 Here, *Non-binary* (NB) users and those who *Prefer Not to Say* (PNTS) are the most represented.
@@ -196,7 +198,8 @@ dating_app_data |>
   summarize(count = n()) |>
 ggplot(aes(y = gender, x = count, fill = gender)) +
   geom_col() +
-  scale_fill_viridis_d()
+  scale_fill_viridis_d() +
+  theme(legend.position = "none")
 ```
 
 So nonbinary users and those who prefer not to say are the largest groups categorized as Addicted.
