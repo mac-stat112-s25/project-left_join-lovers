@@ -3,3 +3,48 @@ title: "Income"
 format: html
 ---
 
+```{r}
+library(tidyverse)
+library(here)
+```
+
+## Initial Exploration of Data
+
+```{r}
+
+dating_app_data <- read.csv('../data/dating_app_behavior_dataset.csv')
+
+dim(dating_app_data)
+
+head(dating_app_data, 20)
+```
+
+**Research Question:**
+How does income impact app dependence? 
+```{r}
+ggplot(dating_app_data, aes(fill=income_bracket,x=app_usage_time_min)) +
+         geom_bar(alpha = 0.5)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+dating_app_data$income_bracket <- factor(dating_app_data$income_bracket, 
+                                         levels = c("Very Low", "Low", "Middle", "Upper-Middle", "High"),
+                                         ordered = TRUE)
+
+filtered_dates <- dating_app_data %>%
+  filter(!match_outcome %in% c("Catfished", "No Action", "One-sided Like", "Instant Match", "Chat Ignored", "Mutual Match"))
+
+ggplot(filtered_dates, aes(y = income_bracket, fill = app_usage_time_label)) +
+  geom_bar(position = "dodge") +
+  facet_wrap(~match_outcome) +
+  labs(title = "Match Outcomes by Income & App Usage Time",
+       x = "Count of People",
+       y = "Income Bracket",
+       fill = "App Usage Time") +
+  theme_minimal() +
+  theme(legend.position = "top",
+        plot.title = element_text(hjust = 0.5))
+```
