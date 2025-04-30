@@ -81,7 +81,8 @@ dating_app_data |>
   theme_minimal()+ 
   labs (title = "Distribution of App Usage by Sexual Orientation for NB and PNTS Users", 
         y = "Time Spent on App", 
-        x = "Density")+ 
+        x = "Density", 
+        fill = "Sexual Orientation")+ 
   guides(alpha = "none")+
   scale_fill_viridis_d()    
 ```
@@ -131,7 +132,7 @@ dating_app_data |>
              alpha = 0.5))+
   geom_density()+
   theme_minimal()+ 
-  labs (title = "Distribution of App Usage by (Non)Straight Male Users", 
+  labs (title = "App Usage by (Non)Straight Male Users", 
         x = "Time Spent on App", 
         y = "Density",
         fill = "User Identifies as Straight") + 
@@ -285,17 +286,18 @@ So nonbinary users and those who prefer not to say are the largest groups catego
 dating_app_data |>
   filter(app_usage_time_label == "Addicted",
          gender %in% c("Non-binary", "Prefer Not to Say")) |>
-  ggplot(aes(y = app_usage_time_min,
+  ggplot(aes(x = app_usage_time_min,
              fill = sexual_orientation,
              alpha = 0.2))+
   facet_wrap(~sexual_orientation)+
   geom_density()+
   theme_minimal()+ 
   labs (title = "Distribution of App Usage by Sexual Orientation for NB and PNTS Users", 
-        y = "Time Spent on App", 
-        x = "Density")+ 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "Sexual Orientation")+ 
   guides(alpha = "none")+
-  scale_fill_viridis_d()    
+  scale_fill_viridis_d(option = "magma")    
 ```
 
 These 8 different density plots demonstrate the difference in time spent on this dating app between users of different sexual orientations.
@@ -306,8 +308,8 @@ Queer users also have a density peak around 165 minutes, reaching a density of \
 ```{r}
 #Looking at non-straight and straight users.
 
-#| fig-cap: Insert. 
-#| fig-alt: Insert.
+#| fig-cap: A density visualization depicting the relationship between time spent on app for straight and non-straight users that held ginder identities of non-binary or "prefer not to say." 
+#| fig-alt: A density visualization depicting the relationship between time spent on app for straight and non-straight users that held ginder identities of non-binary or "prefer not to say."
 
 dating_app_data |>
   filter( gender %in% c("Non-binary", "Prefer Not to Say")) |>
@@ -434,3 +436,5 @@ The boxplot above displays the distribution of mutual matches by location type.
 Metro users tend to have a wider range of mutual matches, with a few high outliers.
 This indicates that some users in urban areas may have an exceptional number of successful interactions.
 On the other hand, users in remote areas appear to have more concentrated and lower values for mutual matches, which suggests a potentially smaller dating pool or fewer interactions.
+
+
