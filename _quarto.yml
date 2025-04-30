@@ -11,7 +11,7 @@ project:
 
 
 book:
-  title: "Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
+  title: "Swiping Through the Spectrum: A Data-Driven Look Into Dating App Behavior"
   author: ["Francesca LoPresti", "Maren Stewart-Tanner", "Providence Thusabantu", "El Davis-Greene"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
