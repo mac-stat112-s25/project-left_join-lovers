@@ -44,7 +44,7 @@ dating_app_data |>
   scale_fill_viridis_d(option = "magma") 
   theme_minimal() 
   # geom_text(aes(label = paste0(app_usage_time_label*100,"%")), 
-  #           position = position_stack(vjust = 0.5), size = 2)
+  # position = position_stack(vjust = 0.5), size = 2)
 
 ```
 
