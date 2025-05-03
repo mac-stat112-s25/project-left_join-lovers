@@ -1,5 +1,5 @@
 ---
-title: "EDA: Francesca Z. LoPresti"
+title: "Francesca Z. LoPresti"
 fig-height: 3
 fig-width: 5
 fig-align: center

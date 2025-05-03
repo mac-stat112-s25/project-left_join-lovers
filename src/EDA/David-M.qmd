@@ -1,5 +1,5 @@
 ---
-title: "EDA: David-M"
+title: "David Manguluti"
 format: html
 editor: visual
 ---
@@ -10,7 +10,6 @@ editor: visual
 library(tidyverse)
 library(here)
 ```
-
 
 ```{r}
 dating_app_data <- read.csv('../../data/dating_app_behavior_dataset.csv')
@@ -23,6 +22,7 @@ dim(dating_app_data)
 
 head(dating_app_data, 20)
 ```
+
 ```{r}
 dating_app_data |>
   group_by(gender) |>
@@ -44,8 +44,10 @@ dating_app_data |>
   group_by(education_level) |>
   summarize(education_count = n())
 ```
+
 ::: {.callout-note title="Reflection"}
-The dataset has a fairly even distribution across categories, which, while not entirely realistic, allows for more reliable analysis. Since the data is simulated, it’ll be interesting to compare it to actual dating app experiences. 
+The dataset has a fairly even distribution across categories, which, while not entirely realistic, allows for more reliable analysis.
+Since the data is simulated, it’ll be interesting to compare it to actual dating app experiences.
 :::
 
 ## Exploring data points individually
@@ -58,13 +60,10 @@ ggplot(dating_app_data, aes(x = swipe_right_ratio)) +
   geom_boxplot()
 ```
 
-
-
-
 ## Research Qs
 
-**Research Question:**
-What is the most common interest tag?
+**Research Question:** What is the most common interest tag?
+
 ```{r}
 library(stringr)
  
@@ -78,6 +77,7 @@ tag_counts_df <- tag_counts_df[order(-tag_counts_df$count), ]
 head(tag_counts_df, 1)
 
 ```
+
 ```{r}
 ggplot(tag_counts_df, aes(x = reorder(tag, count), y = count, fill = tag)) +
   geom_bar(stat = "identity") +
@@ -87,9 +87,8 @@ ggplot(tag_counts_df, aes(x = reorder(tag, count), y = count, fill = tag)) +
   theme(legend.position = "none")
 ```
 
+**Research Question:** How does income impact app dependence?
 
-**Research Question:**
-How does income impact app dependence? 
 ```{r}
 ggplot(dating_app_data, aes(fill=income_bracket,x=app_usage_time_min)) +
          geom_bar(alpha = 0.5)
@@ -101,8 +100,8 @@ ggplot(aes(x=location_type, y=location_mean_usage)) +
   geom_col()
 ```
 
-**Research Question:**
-Are there income differences in dating app behavior and expectations?
+**Research Question:** Are there income differences in dating app behavior and expectations?
+
 ```{r}
 # Load required libraries
 library(ggplot2)
@@ -152,10 +151,7 @@ ggplot(filtered_dates, aes(y = income_bracket, fill = app_usage_time_label)) +
         plot.title = element_text(hjust = 0.5))
 ```
 
-
-
 ```{r}
 #| echo: false
 2 * 2
 ```
-

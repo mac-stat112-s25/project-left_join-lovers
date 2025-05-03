@@ -41,7 +41,6 @@ book:
     - part: "Effective Teamwork Readings"
       chapters: 
       - src/appx/Maren-ST.qmd
-      - src/appx/Providence-T.qmd
       - src/appx/Francesca-L.qmd
       - src/appx/ElDG.qmd
     
