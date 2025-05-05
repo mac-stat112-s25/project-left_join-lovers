@@ -63,8 +63,6 @@ ggplot(dating_app_data, aes(x = location_type, y = mutual_matches)) +
 ```{r}
 library(ggplot2)
 
-library(ggplot2)
-
 ggplot(dating_app_data, aes(x = location_type, y = mutual_matches, fill = location_type)) +
   geom_boxplot(alpha = 0.7) +
   scale_fill_viridis_d(option = "magma") +
