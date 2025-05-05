@@ -1,5 +1,6 @@
 ---
-title: "Swiping Through the Spectrum: A Data-Driven Look Into Dating App Behavior"
+title: "Swiping Through the Spectrum"
+number-sections: false
 ---
 
 ```{r}
@@ -11,7 +12,7 @@ library(viridisLite)
 dating_app_data <- read.csv("data/dating_app_behavior_dataset.csv")
 ```
 
-# Storytelling
+## Introduction
 
 In the modern dating scene, the swipe has become a symbol of possibility, rejection, and everything in between.
 But behind every swipe lies a data point---a reflection of who we are, what we seek, and how our identities shape our digital interactions.
@@ -29,7 +30,7 @@ Our aim is to understand how identity factors relate to app dependency and engag
 
 ## Analysis
 
-#### Gender Identity
+### Gender Identity
 
 We begin with a broad view of how gender identity intersects with app usage levels.
 
@@ -40,7 +41,11 @@ dating_app_data |>
   ggplot(aes(y = gender, fill = app_usage_time_label)) +
   geom_bar(position = "fill") +
   labs(fill = "Usage", y = "Gender") +
-  scale_fill_viridis_d() 
+  scale_fill_viridis_d(option = "magma") 
+  theme_minimal() 
+  # geom_text(aes(label = paste0(app_usage_time_label*100,"%")), 
+  # position = position_stack(vjust = 0.5), size = 2)
+
 ```
 
 The first plot reveals that across all gender identities, the largest usage category is *Extreme User*.
@@ -48,21 +53,24 @@ This suggests that intense engagement is a platform-wide phenomenon---dating app
 
 But diving into just the *Addicted* group uncovers something more specific:
 
-```{r, fig.height=5, fig.width=10}
+```{r, fig.height=3, fig.width=10}
 dating_app_data |>
   filter(app_usage_time_label == "Addicted") |>
   group_by(gender) |>
   summarize(count = n()) |>
 ggplot(aes(y = gender, x = count, fill = gender)) +
   geom_col() +
-  scale_fill_viridis_d()
+  scale_fill_viridis_d(option = "magma") +
+  labs(y="Gender", fill="Gender") +
+  theme(legend.position = "none") +
+  theme_minimal()
 ```
 
 Here, *Non-binary* (NB) users and those who *Prefer Not to Say* (PNTS) are the most represented.
 This is a striking finding and may reflect the fact that NB and PNTS users often find more inclusive spaces online than offline, leading to increased app engagement (Miller, 2015).
 Dating apps may act as rare safe zones for connection, identity exploration, and validation.
 
-#### Sexual Orientation
+### Sexual Orientation
 
 Focusing now on NB and PNTS users, we examine how sexual orientation affects app usage time.
 
@@ -81,7 +89,8 @@ dating_app_data |>
   theme_minimal()+ 
   labs (title = "Distribution of App Usage by Sexual Orientation for NB and PNTS Users", 
         y = "Time Spent on App", 
-        x = "Density")+ 
+        x = "Density", 
+        fill = "Sexual Orientation")+ 
   guides(alpha = "none")+
   scale_fill_viridis_d()    
 ```
@@ -114,7 +123,7 @@ dating_app_data |>
 Interestingly, *Straight* users within NB/PNTS groups show a second peak around 200 minutes, suggesting a higher dependency or reliance on the app.
 This could stem from marginalization within both queer and heteronormative spaces, leading to prolonged searching or browsing behavior.
 
-#### **What About Binary Genders?**
+#### What About Binary Genders?
 
 How do these patterns play out among binary gender groups?
 
@@ -131,7 +140,7 @@ dating_app_data |>
              alpha = 0.5))+
   geom_density()+
   theme_minimal()+ 
-  labs (title = "Distribution of App Usage by (Non)Straight Male Users", 
+  labs (title = "App Usage by (Non)Straight Male Users", 
         x = "Time Spent on App", 
         y = "Density",
         fill = "User Identifies as Straight") + 
@@ -164,7 +173,9 @@ dating_app_data |>
 Among female users, non-straight individuals spend more time on the app, especially past the 150-minute mark.
 This is may be due to the fact that non-straight female users consistently outnumber straight female users beginning at 150 minutes.
 
-#### **Does where you live change how you date?**
+### Location
+
+#### Does where you live change how you date?
 
 \[insert plot\]
 
@@ -178,7 +189,7 @@ When comparing average usage time:
 Metro users consistently lead, reinforcing the idea that urban environments foster more digital dating activity whether due to convenience or social norms.
 This also could possibly be due to greater social interaction or availability of matches which further supports the idea that people in more densely populated areas tend to engage with dating apps more frequently.
 
-#### **Who's Really Matching?**
+#### Who's Really Matching?
 
 \[insert plot here\]
 
@@ -186,7 +197,7 @@ Our final plot examines mutual matches across location types.
 Again, metro users have more variability and higher maximum matches, suggesting greater chances of success in densely populated areas.
 The opposite is also true for users in remote areas who appear to have more concentrated and lower values for mutual matches, which suggests a potentially smaller dating pool or fewer interactions.\
 
-## **Alternative Explanations**
+### Alternative Explanations
 
 While the data tells a compelling story, alternative interpretations should be considered:
 
@@ -196,7 +207,7 @@ While the data tells a compelling story, alternative interpretations should be c
 
 3.  Psychological dependency like fear of missing out or gamification---may inflate time spent regardless of real connection.
 
-## **Conclusion:** What the Swipe Says About Us!
+## Conclusion: What the Swipe Says About Us!
 
 Dating apps are more than platforms for meeting people---they're mirrors of modern identity.
 Our analysis showed:
@@ -209,7 +220,7 @@ Our analysis showed:
 
 To sum it all up, dating apps don't just reveal what we want---they reflect who we are becoming in a digital age.
 
-## **References**
+## References
 
 Huynh, H.
 (2018).
@@ -234,7 +245,11 @@ Smith, A., & Duggan, M.
 Online dating & relationships.
 Retrieved from Pew Research Center: Internet, Science & Tech website: https://www.pewresearch.org/internet/2013/10/21/online-dating-relationships/
 
-## **Visualizations**
+## Visualizations
+
+<details>
+
+<summary>Click for Visualizations</summary>
 
 ```{r}
 library(tidyverse)
@@ -245,7 +260,7 @@ library(viridisLite)
 dating_app_data <- read.csv("data/dating_app_behavior_dataset.csv")
 ```
 
-### Gender
+#### Gender
 
 Let's look at user labels.
 
@@ -269,12 +284,13 @@ dating_app_data |>
   summarize(count = n()) |>
 ggplot(aes(y = gender, x = count, fill = gender)) +
   geom_col() +
-  scale_fill_viridis_d()
+  scale_fill_viridis_d() +
+  theme(legend.position = "none")
 ```
 
 So nonbinary users and those who prefer not to say are the largest groups categorized as Addicted.
 
-### Sexual Orientation
+#### Sexual Orientation
 
 *Note: for this analysis, NB = Non-binary users and PNTS = users that "Prefer Not to Say" for their gender identity.*
 
@@ -285,17 +301,18 @@ So nonbinary users and those who prefer not to say are the largest groups catego
 dating_app_data |>
   filter(app_usage_time_label == "Addicted",
          gender %in% c("Non-binary", "Prefer Not to Say")) |>
-  ggplot(aes(y = app_usage_time_min,
+  ggplot(aes(x = app_usage_time_min,
              fill = sexual_orientation,
              alpha = 0.2))+
   facet_wrap(~sexual_orientation)+
   geom_density()+
   theme_minimal()+ 
   labs (title = "Distribution of App Usage by Sexual Orientation for NB and PNTS Users", 
-        y = "Time Spent on App", 
-        x = "Density")+ 
+        x = "Time Spent on App", 
+        y = "Density",
+        fill = "Sexual Orientation")+ 
   guides(alpha = "none")+
-  scale_fill_viridis_d()    
+  scale_fill_viridis_d(option = "magma")    
 ```
 
 These 8 different density plots demonstrate the difference in time spent on this dating app between users of different sexual orientations.
@@ -306,8 +323,8 @@ Queer users also have a density peak around 165 minutes, reaching a density of \
 ```{r}
 #Looking at non-straight and straight users.
 
-#| fig-cap: Insert. 
-#| fig-alt: Insert.
+#| fig-cap: A density visualization depicting the relationship between time spent on app for straight and non-straight users that held ginder identities of non-binary or "prefer not to say." 
+#| fig-alt: A density visualization depicting the relationship between time spent on app for straight and non-straight users that held ginder identities of non-binary or "prefer not to say."
 
 dating_app_data |>
   filter( gender %in% c("Non-binary", "Prefer Not to Say")) |>
@@ -376,7 +393,7 @@ Compared to the last visualization, there is less of a distinction between strai
 However, there is non-straight female users consistently outnumber straight female users beginning at 150 minutes.
 This may possibly indicate that non-straight females spend more time on the app thatn straight females.
 
-### Location
+#### Location
 
 How does location (i.e. remote area, metro, etc) impact app dependence?
 
@@ -434,3 +451,5 @@ The boxplot above displays the distribution of mutual matches by location type.
 Metro users tend to have a wider range of mutual matches, with a few high outliers.
 This indicates that some users in urban areas may have an exceptional number of successful interactions.
 On the other hand, users in remote areas appear to have more concentrated and lower values for mutual matches, which suggests a potentially smaller dating pool or fewer interactions.
+
+

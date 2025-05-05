@@ -11,10 +11,10 @@ project:
 
 
 book:
-  title: "Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software"
-  author: ["Francesca LoPresti", "Maren Stewart-Tanner", "Providence Thusabantu", "El Davis-Greene"]
+  title: "Swiping Through the Spectrum: A Data-Driven Look Into Dating App Behavior"
+  author: ["Francesca LoPresti", "Maren Stewart-Tanner", "Providence Thusabantu", "El Davis-Greene", "David Manguluti"]
   date: today  # use today to update date published based on last time project was edited
-  date-format: full
+  date-format: full 
   # favicon: images/logo.png
   reader-mode: true
   # site-url: https://hashcx.github.io/mac-comp112website-f24/
@@ -41,7 +41,6 @@ book:
     - part: "Effective Teamwork Readings"
       chapters: 
       - src/appx/Maren-ST.qmd
-      - src/appx/Providence-T.qmd
       - src/appx/Francesca-L.qmd
       - src/appx/ElDG.qmd
     
@@ -50,6 +49,7 @@ book:
         - src/EDA/Maren-ST.qmd
         - src/EDA/Francesca-L.qmd
         - src/EDA/EDG_EDA.qmd
+        - src/EDA/David-M.qmd 
   
     - part: "Analysis"
       chapters: 
