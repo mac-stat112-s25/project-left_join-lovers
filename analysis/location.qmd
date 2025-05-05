@@ -25,7 +25,7 @@ dating_app_data |>
              y = location_mean_usage, 
              fill = location_type)) +
   geom_col(show.legend = FALSE) +
-  scale_fill_viridis_d() +
+  scale_fill_viridis_d(option = "magma") +
   labs(
     title = "Average App Usage Time by Location Type",
     subtitle = "Mean usage time in minutes per location category",
@@ -63,21 +63,26 @@ ggplot(dating_app_data, aes(x = location_type, y = mutual_matches)) +
 ```{r}
 library(ggplot2)
 
+library(ggplot2)
+
 ggplot(dating_app_data, aes(x = location_type, y = mutual_matches, fill = location_type)) +
   geom_boxplot(alpha = 0.7) +
-  scale_fill_viridis_d() +  # Apply viridis color palette
+  scale_fill_viridis_d(option = "magma") +
   labs(
-    title = "Mutual Matches by Location Type",
+    title = "Distribution of Mutual Matches Across Location Types",
+    subtitle = "Boxplot showing variation in mutual match counts by location category",
     x = "Location Type",
-    y = "Number of Mutual Matches"
+    y = "Mutual Matches"
   ) +
-  theme_minimal() +
+  theme_minimal(base_size = 14) +
   theme(
     legend.position = "none",
-    plot.title = element_text(face = "bold", size = 14),
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(size = 11, margin = margin(b = 10)),
     axis.text = element_text(size = 10),
     axis.title = element_text(size = 12)
   )
+
 
 ```
 
