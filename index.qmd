@@ -41,11 +41,8 @@ dating_app_data |>
   ggplot(aes(y = gender, fill = app_usage_time_label)) +
   geom_bar(position = "fill") +
   labs(fill = "Usage", y = "Gender") +
-  scale_fill_viridis_d(option = "magma") 
+  scale_fill_viridis_d(option = "magma") +
   theme_minimal() 
-  # geom_text(aes(label = paste0(app_usage_time_label*100,"%")), 
-  # position = position_stack(vjust = 0.5), size = 2)
-
 ```
 
 The first plot reveals that across all gender identities, the largest usage category is *Extreme User*.
