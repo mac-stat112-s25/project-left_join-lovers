@@ -9,6 +9,8 @@ editor: visual
 ```{r}
 library(tidyverse)
 library(here)
+library(ggplot2)
+library(dplyr)
 ```
 
 ```{r}
@@ -21,6 +23,10 @@ dating_app_data <- read.csv('../../data/dating_app_behavior_dataset.csv')
 dim(dating_app_data)
 
 head(dating_app_data, 20)
+
+glimpse(dating_app_data)
+summary(dating_app_data)
+colSums(is.na(dating_app_data))
 ```
 
 ```{r}
@@ -47,17 +53,34 @@ dating_app_data |>
 
 ::: {.callout-note title="Reflection"}
 The dataset has a fairly even distribution across categories, which, while not entirely realistic, allows for more reliable analysis.
-Since the data is simulated, it’ll be interesting to compare it to actual dating app experiences.
+
+This dataset allows for unique analysis of digital intimacy trends in a controlled environment. The balance across demographics suggests that the Kaggle user who uploaded these wanted an intentional design for analysis, which may not truly mirror real-world dating ecosystems--which are shaped by structural inequalities, algorithmic biases, and cultural expectations. It’s important for us as a group to keep this in mind as we do both our EDA and the entire project as a wholel. That this is fully simulated data, while useful for pattern recognition, can obscure the lived experiences of users on actual platforms—especially those from marginalized communities: like the LGBTQ+ community which a majority of our project hinges upon. 
+
+Since the data is simulated, it is a note of interest as to how we can compare it to actual dating app experiences.
+
+
 :::
 
 ## Exploring data points individually
 
 ```{r}
-ggplot(dating_app_data, aes(x = app_usage_time_min)) +
-  geom_bar()
 
-ggplot(dating_app_data, aes(x = swipe_right_ratio)) +
-  geom_boxplot()
+#Swipe Right Ratio Box Plot Jitter
+ggplot(dating_app_data, aes(y = swipe_right_ratio)) +
+  geom_boxplot(fill = "#3498db", alpha = 0.7, outlier.color = "#e74c3c") +
+  labs(title = "Swipe Right Ratio Distribution", subtitle = "Boxplot Observations", y = "Swipe Right Ratio", x = NULL) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    axis.text.x = element_blank())
+
+#APP USAGE TIME (HISTOGRAM)
+ggplot(dating_app_data, aes(x = app_usage_time_min)) +
+  geom_histogram(binwidth = 10, fill = "#69b3a2", color = "white", alpha = 0.7) +
+  geom_density(aes(y = ..density.. * 10), color = "red") +
+  labs(title = "Distribution of App Usage Time (in minutes)", x = "App Usage Time (min)", y = "Frequency") +
+  theme_minimal()
 ```
 
 ## Research Qs
@@ -126,11 +149,7 @@ ggplot(dating_app_data, aes(x = income_bracket, fill = app_usage_time_label)) +
 ```
 
 ```{r}
-# Load required libraries
-library(ggplot2)
-library(dplyr)
 
-# Ensure income_bracket is an ordered factor
 dating_app_data$income_bracket <- factor(dating_app_data$income_bracket, 
                                          levels = c("Very Low", "Low", "Middle", "Upper-Middle", "High"),
                                          ordered = TRUE)
