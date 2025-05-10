@@ -1,3 +1,21 @@
 ---
 title: "David-M"
-forma
+format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
+---
+
+**Title: Learn and Grow: How Teamwork Makes the Dream Work**
+Link:https://your.yale.edu/learn-and-grow-how-teamwork-makes-dream-work
+
+**Summary**
+This article explores the powerful impact of teamwork in the workplace, emphasizing how great leadership paired with a cohesive team can transform vision into success. Drawing on John C. Maxwell’s quote, it warns that even the best ideas will fail without strong team dynamics.
+
+The article highlights 3 key principles of effective teamwork:
+	1.	Approachability – Teams thrive when members feel safe to share ideas and ask questions.
+	2.	Respect & Equality – Valuing each person’s contributions builds fairness and reduces workplace stress.
+	3.	Accountability – Taking responsibility for actions promotes learning and minimizes conflict.
+
+With these foundations, teams evolve beyond just completing tasks—they build loyalty, foster trust, and drive high performance. The article concludes that cultivating positive team relationships not only improves productivity but also boosts employee satisfaction across the board.

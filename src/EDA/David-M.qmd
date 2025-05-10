@@ -132,4 +132,45 @@ library(dplyr)
 
 # Ensure income_bracket is an ordered factor
 dating_app_data$income_bracket <- factor(dating_app_data$income_bracket, 
-                                         levels = c("Very Low", "Low", "Middle"
+                                         levels = c("Very Low", "Low", "Middle", "Upper-Middle", "High"),
+                                         ordered = TRUE)
+
+# Create the trivariate plot with facet by match_outcome
+ggplot(dating_app_data, aes(x = income_bracket, fill = app_usage_time_label)) +
+  geom_bar(position = "dodge") +
+  facet_wrap(~match_outcome) +
+  labs(title = "Match Outcome by Income and App Usage Time",
+       x = "Income Bracket",
+       y = "Count",
+       fill = "App Usage Time") +
+  theme_minimal() +
+  theme(legend.position = "top",
+        plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+
+dating_app_data$income_bracket <- factor(dating_app_data$income_bracket, 
+                                         levels = c("Very Low", "Low", "Middle", "Upper-Middle", "High"),
+                                         ordered = TRUE)
+
+filtered_dates <- dating_app_data %>%
+  mutate(match_outcome_clean = tolower(str_trim(match_outcome))) %>%
+  filter(!match_outcome_clean %in% c("Catfished", "No Action", "One-sided Like", "Instant Match", "Chat Ignored", "Mutual Match"))
+
+ggplot(filtered_dates, aes(y = income_bracket, fill = app_usage_time_label)) +
+  geom_bar(position = "dodge") +
+  facet_wrap(~match_outcome) +
+  labs(title = "Match Outcomes by Income & App Usage Time",
+       x = "Count of People",
+       y = "Income Bracket",
+       fill = "App Usage Time") +
+  theme_minimal() +
+  theme(legend.position = "top",
+        plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+#| echo: false
+2 * 2
+```
