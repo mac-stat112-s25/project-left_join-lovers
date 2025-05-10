@@ -10,6 +10,12 @@ execute:
 **Title: Learn and Grow: How Teamwork Makes the Dream Work**
 Link:https://your.yale.edu/learn-and-grow-how-teamwork-makes-dream-work
 
+<<<<<<< HEAD
+Link:https://your.yale.edu/learn-and-grow-how-teamwork-makes-dream-work
+=======
+Link: [Learn and Grow: How Teamwork Makes the Dream Work](https://your.yale.edu/learn-and-grow-how-teamwork-makes-dream-work)
+>>>>>>> 6f2dbfb1e1cda67bd3dad7daa38cb5f54db8a506
+
 **Summary**
 This article explores the powerful impact of teamwork in the workplace, emphasizing how great leadership paired with a cohesive team can transform vision into success. Drawing on John C. Maxwell’s quote, it warns that even the best ideas will fail without strong team dynamics.
 
