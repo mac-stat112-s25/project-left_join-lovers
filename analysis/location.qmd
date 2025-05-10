@@ -1,0 +1,86 @@
+---
+title: "Location"
+format: html
+---
+
+
+
+```{r}
+library(tidyverse)
+
+```
+
+```{r}
+dating_app_data <- read.csv('../data/dating_app_behavior_dataset.csv')
+dating_app_data <- read.csv('../data/dating_app_behavior_dataset.csv')
+
+```
+
+How does location (i.e. remote area, metro, etc) impact app dependence? 
+```{r}
+dating_app_data |>
+  group_by(location_type) |>
+  summarise(location_mean_usage = mean(app_usage_time_min, na.rm = TRUE)) |>
+  ggplot(aes(x = reorder(location_type, -location_mean_usage), 
+             y = location_mean_usage, 
+             fill = location_type)) +
+  geom_col(show.legend = FALSE) +
+  scale_fill_viridis_d(option = "magma") +
+  labs(
+    title = "Average App Usage Time by Location Type",
+    subtitle = "Mean usage time in minutes per location category",
+    x = "Location Type",
+    y = "Average Usage Time (minutes)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+
+How does location type influence the number of matches or successful interactions users report?
+
+```{r}
+colnames(dating_app_data)
+```
+
+```{r}
+dating_app_data |>
+  group_by(location_type) |>
+  summarize(avg_mutual_matches = mean(mutual_matches, na.rm = TRUE))
+
+```
+
+```{r}
+ggplot(dating_app_data, aes(x = location_type, y = mutual_matches)) +
+  geom_boxplot() +
+  labs(title = "Mutual Matches by Location Type",
+       x = "Location Type",
+       y = "Number of Mutual Matches")
+```
+```{r}
+library(ggplot2)
+
+ggplot(dating_app_data, aes(x = location_type, y = mutual_matches, fill = location_type)) +
+  geom_boxplot(alpha = 0.7) +
+  scale_fill_viridis_d(option = "magma") +
+  labs(
+    title = "Distribution of Mutual Matches Across Location Types",
+    subtitle = "Boxplot showing variation in mutual match counts by location category",
+    x = "Location Type",
+    y = "Mutual Matches"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(size = 11, margin = margin(b = 10)),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12)
+  )
+
+
+```
+

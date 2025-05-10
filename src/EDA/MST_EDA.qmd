@@ -1,0 +1,115 @@
+---
+title: "EDA: Maren Stewart-Tanner"
+execute: 
+  warning: false
+  code: true
+fig-height: 3
+fig-width: 5
+fig-align: center
+code-fold: false
+number-sections: false
+---
+
+## Data Import
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+
+```{r}
+dating_app_data <- read.csv('../../data/dating_app_behavior_dataset.csv')
+```
+
+## Initial Exploration
+
+```{r}
+dim(dating_app_data)
+
+head(dating_app_data, 10)
+```
+
+```{r}
+dating_app_data |>
+  group_by(gender) |>
+  summarize(gender_count = n())
+
+dating_app_data |>
+  group_by(sexual_orientation) |>
+  summarize(orientation_count = n())
+
+dating_app_data |>
+  group_by(location_type) |>
+  summarize(location_count = n())
+
+dating_app_data |>
+  group_by(income_bracket) |>
+  summarize(income_count = n())
+
+dating_app_data |>
+  group_by(education_level) |>
+  summarize(education_count = n())
+```
+::: {.callout-note title="Reflection"}
+There are a relatively even number of people belonging to each category in this dataset. Though this may not be realistic to real life, it makes analysing the data interesting because each value has enough entries to give a relatively reliable stat. Because this information is simulated, it will be interesting to compare these to real-life dating app experience. 
+:::
+
+## Exploring data points individually
+
+```{r}
+ggplot(dating_app_data, aes(x = app_usage_time_min)) +
+  geom_boxplot()
+
+ggplot(dating_app_data, aes(x = swipe_right_ratio)) +
+  geom_boxplot()
+```
+boring...
+
+
+
+
+## Deep dives on research questions
+
+**Research Question:**
+How does education level impact the swipe right ratio or swipe right label?
+
+```{r}
+dating_app_data |>
+  ggplot(aes(fill=education_level, x=swipe_right_ratio)) +
+  geom_density(alpha = 0.5)
+```
+
+```{r}
+dating_app_data |>
+  group_by(education_level) |>
+  mutate(mean_swipe_edu = mean(swipe_right_ratio)) |>
+ggplot(aes(x=education_level, y=mean_swipe_edu)) +
+  geom_col(alpha = 0.5)
+```
+boring...
+
+**Research Question:**
+
+How does location (i.e. remote area, metro, etc) impact app dependence? 
+
+```{r}
+ggplot(dating_app_data, aes(fill=location_type, x=app_usage_time_min)) +
+    geom_density(alpha = 0.5)
+```
+
+```{r}
+dating_app_data |>
+  group_by(location_type) |>
+  mutate(location_mean_usage = mean(app_usage_time_min)) |>
+ggplot(aes(x=location_type, y=location_mean_usage)) +
+  geom_col()
+```
+boring again...
+
+**Research Question:**
+
+What interest tag is most linked to high app dependence (ie in the “extreme user,” “high,” and “addicted” brackets?)
+
+*I'm not quite sure what to do to analyze this but will confer with my group*
+

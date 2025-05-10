@@ -1,5 +1,54 @@
 ---
 title: "Proposal"
+editor: 
+  markdown: 
+    wrap: sentence
 ---
 
-Your proposal will go here.
+Francesca LoPresti, Maren Stewart-Tanner, Providence Thusabantu, El Davis-Greene, David Manguluti
+
+Demographics and Dating Apps: How User Interaction Varies by Group in Simulated Dating Software
+
+**Data:**
+
+Dating App Behavior Dataset (Kaggle - This is a synthetic dataset generated programmatically. It does not contain real user data and is intended for educational and analytical purposes only.)
+
+**Short description of project:**
+
+In this project, we will be examining user data information for a simulated dating app.
+This data set examines 19 aspects of how users interact with or display themselves on the dating app, including gender, sexual orientation, income level, interest tags, and more.
+In the preset research, we will focus on how the demographic factors provided (gender, sexual orientation, income level, education, location, etc) impact the mentalities and actions that users approach the dating app with.
+Our research questions are varied, but among them are the following: How does your sexual orientation impact your dating app mentality; What are the most influential demographic factors in determining a user’s dependency; How does education level impact the swipe right ratio or swipe right label?
+Additionally we will examine how self-reported interests may also have an impact on the users’ interactions with the app.
+We will use RStudio to create visualizations to examine these questions and generate visualizations that aid in the understanding of these data.
+
+**Possible research questions:**
+
+1.  How does your sexual orientation impact your dating app mentality? General attitude by sexual orientation
+
+\- Color/ facet with app usage time?
+
+2.  What are the most influential demographic factors in determining a user’s dependency (as quantified by minutes (either numbers or categorical brackets) spent on a dating app)?
+
+\- Geographic (urban/suburban/rural)
+
+\- Class
+
+\- Education
+
+3.  A combination of those factors? Ie low-income urban vs low-income rural?
+4.  What can this tell us about the “connectedness” of certain communities?
+5.  What is the most common interest tag?
+6.  What interest tag is most linked to high app dependence (ie in the “extreme user,” “high,” and “addicted” brackets?)
+7.  How does location (i.e. remote area, metro, etc) impact app dependence?
+8.  How does education level impact the swipe right ratio or swipe right label?
+9.  Are there gender-based differences in dating app behavior and expectations?
+10. What are the most common behaviors among frequent vs. infrequent users?
+
+**Reason/ inspiration behind choosing the topic:**
+
+In recent years, dating apps have transformed how people form romantic and social connections.
+With technology playing an increasingly central role in our personal lives, understanding user behavior on these platforms provides valuable insight into modern relationship dynamics, preferences, and societal trends.
+We chose the Dating App Behavior Dataset because it has a mix of both quantitative and qualitative variables that we think can be used to study behavior.
+Our goal is to identify relationships and understand how they differ between different groups of people.
+Lastly, this topic is relatable to a lot of people with the increase in online dating.
