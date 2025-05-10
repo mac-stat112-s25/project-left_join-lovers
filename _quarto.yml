@@ -44,6 +44,7 @@ book:
       - src/appx/Francesca-L.qmd
       - src/appx/ElDG.qmd
       - src/appx/Providence-T.qmd
+      - src/appx/David-M.qmd
     
     - part: "EDA"
       chapters: 
