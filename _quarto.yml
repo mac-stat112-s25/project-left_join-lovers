@@ -38,11 +38,12 @@ book:
   chapters:
     - index.qmd
     
-    - part: "Effective Teamwork Readings"
+    - part: "Effective Teamwork"
       chapters: 
       - src/appx/Maren-ST.qmd
       - src/appx/Francesca-L.qmd
       - src/appx/ElDG.qmd
+      - src/appx/Providence-T.qmd
     
     - part: "EDA"
       chapters: 
