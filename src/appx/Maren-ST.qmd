@@ -1,5 +1,5 @@
 ---
-title: "Maren Stewart-Tanner"
+title: "Maren S-T."
 format: html
 execute: 
   echo: false

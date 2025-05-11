@@ -1,5 +1,5 @@
 ---
-title: "El Davis-Greene"
+title: "El D-G."
 format: html
 ---
 
