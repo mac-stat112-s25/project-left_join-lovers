@@ -3,7 +3,11 @@ title: "Francesca Z. LoPresti"
 format: html
 ---
 
-Link: https://www.forbes.com/sites/rodgerdeanduncan/2024/10/10/how-to-make-teamwork-effective-for-success/
+<<<<<<< HEAD
+Link:https://www.forbes.com/sites/rodgerdeanduncan/2024/10/10/how-to-make-teamwork-effective-for-success/
+=======
+Link: [How to Make Teamwork Effective for Success](https://www.forbes.com/sites/rodgerdeanduncan/2024/10/10/how-to-make-teamwork-effective-for-success/)
+>>>>>>> 6f2dbfb1e1cda67bd3dad7daa38cb5f54db8a506
 
 Title: How to Make Teamwork Effective for Success
 
