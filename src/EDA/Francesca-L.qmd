@@ -1,0 +1,120 @@
+---
+title: "Francesca L."
+fig-height: 3
+fig-width: 5
+fig-align: center
+---
+
+#Step 1: Import and Know Your Data
+```{r}
+library(tidyverse)
+library(here)
+dating_app_data <- read_csv(here("data","dating_app_behavior_dataset.csv"))
+```
+
+```{r}
+#how many data points I have
+nrow(dating_app_data)
+
+#what the first several rows look like
+head(dating_app_data)
+
+#a quick summary
+str(dating_app_data)
+```
+
+<<<<<<< Updated upstream
+```{r}
+#Reminder: one of our main questions for this project centers around sexual orientation and the factors that may give evidence to what the user's "app mentality" looks like. To do this, it may be helpful to *first* investigate this data set based on different sexual orientations. 
+
+#How many different sexual orientations are represented in this dataset? Answer: 8
+dating_app_data |>
+  group_by(sexual_orientation) |>
+  summarise(n = n())
+
+#How are they distributed?
+dating_app_data |>
+  group_by(sexual_orientation) |>
+  ggplot(aes(x = sexual_orientation))+
+  geom_bar(color = "darkblue",
+           fill = "lightblue")+
+  theme_minimal()+ 
+  labs (title = "Distribution of Sexual Orientations w/i Dataset", 
+        x = "Sexual Orientation", 
+        y = "# Individuals")
+```
+
+```{r}
+#How is app usage distributed?
+dating_app_data |>
+  group_by(app_usage_time_min) |>
+  ggplot(aes(x = app_usage_time_min, alpha = 0.2))+
+  geom_density(color = "darkblue",
+           fill = "lightblue")+
+  theme_minimal()+ 
+  labs (title = "Distribution of Time Spent on Dating App", 
+        x = "Time Spent on App", 
+        y = "Density")
+```
+
+```{r}
+#How does this change when we control for sexual orientations?
+dating_app_data |>
+  group_by(app_usage_time_min) |>
+  ggplot(aes(x = app_usage_time_min, 
+             fill = sexual_orientation,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of Sexual Orientations by App Usage", 
+        x = "Time Spent on App", 
+        y = "Density")
+```
+
+```{r}
+#Hm... not the biggest fan of this visualization. Wondering whether we can break up the minutes into chunks? More like a histogram?
+dating_app_data |>
+  ggplot(aes(x = app_usage_time_min))+
+  geom_histogram(bins = 50, 
+                 color = "darkblue", 
+                 fill = "lightblue")+
+  theme_minimal()+ 
+  labs (title = "App Usage", 
+        x = "Time Spent on App", 
+        y = "Frequency")
+#Not super helpful... but it does point out a few outliers of time... I guess?
+```
+```{r}
+#Specifying subjects to non-straight men... how do non-straight men compare against straight men in terms of app-usage?
+
+dating_app_data |>
+  filter(gender == "Male") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "Distribution of App Usage by Non-Straight vs Straight Men", 
+        x = "Time Spent on App", 
+        y = "Density")
+
+#Ooh! Something interesting! I wonder how that changes with female-identifying folks...
+```
+
+```{r}
+#Same thing but for females
+dating_app_data |>
+  filter(gender == "Female") |>
+   mutate(straight = str_detect(sexual_orientation, "Straight")) |>
+  ggplot(aes(x = app_usage_time_min,
+             fill = straight,
+             alpha = 0.5))+
+  geom_density()+
+  theme_minimal()+ 
+  labs (title = "App Usage by Non-Straight vs Straight Women", 
+        x = "Time Spent on App", 
+        y = "Density")
+```
+
+

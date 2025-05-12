@@ -1,0 +1,17 @@
+---
+title: "Francesca L."
+format: html
+---
+
+<<<<<<< HEAD
+Link:https://www.forbes.com/sites/rodgerdeanduncan/2024/10/10/how-to-make-teamwork-effective-for-success/
+=======
+Link: [How to Make Teamwork Effective for Success](https://www.forbes.com/sites/rodgerdeanduncan/2024/10/10/how-to-make-teamwork-effective-for-success/)
+>>>>>>> 6f2dbfb1e1cda67bd3dad7daa38cb5f54db8a506
+
+Title: How to Make Teamwork Effective for Success
+
+**Summary**
+- Continuous recognition of good *team* performance. Using words such as "we", "us", and "ours" is better than using "I", "me", or "mine."
+- Outcomes must be clearly defined.
+- Team members must have confidence in the metrics used to measure success/ completion of certain tasks.

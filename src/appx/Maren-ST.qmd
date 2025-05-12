@@ -1,0 +1,31 @@
+---
+title: "Maren S-T."
+format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
+---
+
+<<<<<<< HEAD
+**Title: The Importance of Teamwork (as proven by science)**
+
+Link:https://www.atlassian.com/blog/teamwork/the-importance-of-teamwork
+=======
+[The Importance of Teamwork (as proven by science)](https://www.atlassian.com/blog/teamwork/the-importance-of-teamwork)
+>>>>>>> 6f2dbfb1e1cda67bd3dad7daa38cb5f54db8a506
+
+**Summary**
+The article explains the importance of distributed work in a workplace setting. Though some used to disagree, teamwork is on the rise, and that is for the better. 
+
+The article then lists 10 benefits of teamwork: 
+1) Enables better problem solving: with more minds come more ideas! 
+2) Potential for innovation: discomfort and being around those not like you pushes you to grow
+3) Happier employees: 80% more likely to express emotional well being in a workplace that encourages teamwork
+4) Enhances personal growth: learn something new about yourself by interacting with others
+5) Lowers risk of burnout: share the load! 
+6) Opportunities for growth: larger groups mean the company can do more complex things
+7) Boosts productivity: getting kudos from a team member is motivating
+8) Smarter risk-taking: take risks and rely on your team
+9) Fewer mistakes: less frazzled means fewer errors
+10) Sparks creativity: great ideas come from communication and teamwork

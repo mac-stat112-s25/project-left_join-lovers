@@ -1,0 +1,111 @@
+---
+title: "El D-G."
+format: html
+fig-height: 3
+fig-width: 5
+fig-align: center
+---
+
+## Data Import
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+
+```{r}
+dating_app_data <- read.csv('../../data/dating_app_behavior_dataset.csv')
+```
+
+## Initial Exploration of Data
+
+```{r}
+dim(dating_app_data)
+
+head(dating_app_data, 10)
+```
+```{r}
+dating_app_data |>
+  group_by(gender) |>
+  summarize(gender_count = n())
+
+dating_app_data |>
+  group_by(sexual_orientation) |>
+  summarize(orientation_count = n())
+
+dating_app_data |>
+  group_by(location_type) |>
+  summarize(location_count = n())
+
+dating_app_data |>
+  group_by(income_bracket) |>
+  summarize(income_count = n())
+
+dating_app_data |>
+  group_by(education_level) |>
+  summarize(education_count = n())
+```
+::: {.callout-note title="Reflection"}
+The dataset has a fairly even distribution across categories, which, while not entirely realistic, allows for more reliable analysis. Since the data is simulated, it’ll be interesting to compare it to actual dating app experiences. 
+:::
+
+## Exploring data points individually
+
+```{r}
+ggplot(dating_app_data, aes(x = app_usage_time_min)) +
+  geom_boxplot()
+
+ggplot(dating_app_data, aes(x = swipe_right_ratio)) +
+  geom_boxplot()
+```
+
+
+
+
+## Research Qs
+
+**Research Question:**
+What is the most common interest tag?
+```{r}
+library(stringr)
+ 
+common_tags <- c("music", "hiking", "movies", "travel", "fitness", "food", "books", "dancing", "photography", "art", "tattoos", "yoga", "pets", "DIY", "traveling", "languages", "writing", "painting", "coding")
+
+tag_counts <- sapply(common_tags, function(tag) sum(str_detect(dating_app_data$interest_tags, tag)))
+
+tag_counts_df <- data.frame(tag = common_tags, count = tag_counts)
+
+tag_counts_df <- tag_counts_df[order(-tag_counts_df$count), ]
+head(tag_counts_df, 1)
+
+```
+```{r}
+ggplot(tag_counts_df, aes(x = reorder(tag, count), y = count, fill = tag)) +
+  geom_bar(stat = "identity") +
+  coord_flip() + 
+  labs(title = "Most Common Interest Tags", x = "Interest Tag", y = "Count") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+
+**Research Question:**
+How does location (i.e. remote area, metro, etc) impact app dependence? 
+```{r}
+ggplot(dating_app_data, aes(fill=location_type,x=app_usage_time_min)) +
+         geom_density(alpha = 0.5)
+
+dating_app_data |>
+  group_by(location_type) |>
+  mutate(location_mean_usage = mean(app_usage_time_min)) |>
+ggplot(aes(x=location_type, y=location_mean_usage)) +
+  geom_col()
+```
+
+**Research Question:**
+Are there gender-based differences in dating app behavior and expectations?
+```{r}
+
+```
+

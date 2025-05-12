@@ -11,10 +11,10 @@ project:
 
 
 book:
-  title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name"]
+  title: "Swiping Through the Spectrum: A Data-Driven Look Into Dating App Behavior"
+  author: ["Francesca LoPresti", "Maren Stewart-Tanner", "Providence Thusabantu", "El Davis-Greene", "David Manguluti"]
   date: today  # use today to update date published based on last time project was edited
-  date-format: full
+  date-format: full 
   # favicon: images/logo.png
   reader-mode: true
   # site-url: https://hashcx.github.io/mac-comp112website-f24/
@@ -29,7 +29,7 @@ book:
 
 
   sidebar:
-    title: "sidebar title"
+    title: "Demographics and Dating Apps"
     collapse-level: 2
     style: "docked"
     pinned: true
@@ -37,7 +37,31 @@ book:
 
   chapters:
     - index.qmd
-
+    
+    - part: "Effective Teamwork"
+      chapters: 
+      - src/appx/Maren-ST.qmd
+      - src/appx/Francesca-L.qmd
+      - src/appx/ElDG.qmd
+      - src/appx/Providence-T.qmd
+      - src/appx/David-M.qmd
+    
+    - part: "EDA"
+      chapters: 
+        - src/EDA/Maren-ST.qmd
+        - src/EDA/Francesca-L.qmd
+        - src/EDA/EDG_EDA.qmd
+        - src/EDA/David-M.qmd 
+  
+    - part: "Analysis"
+      chapters: 
+        - analysis/income.qmd
+        - analysis/location.qmd
+        - analysis/gender.qmd
+        - analysis/orientation.qmd
+        - analysis/tags.qmd
+        - analysis/education.qmd
+        
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
@@ -63,6 +87,7 @@ format:
     code-block-border-left: "#1482FA"
     code-tools: true
     page-layout: full
+    code-fold: true
 
   # pdf:
   #   documentclass: scrreprt
@@ -73,7 +98,9 @@ format:
 execute:
   cache: true
 #   freeze: auto # remove when using GitHub action to execute code
-
+  echo: true
+  warning: false
+  error: false
 
 
 editor: 
